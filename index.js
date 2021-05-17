@@ -8,7 +8,7 @@ const token = core.getInput('github-token', { required: true })
 
 let branchStructure = core.getInput('branch_structure') || testBranchStructure
 
-console.log("test");
+console.log("testing again");
 
 
 try {
