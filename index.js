@@ -8,7 +8,7 @@ const token = core.getInput('github-token', { required: true })
 
 let branchStructure = core.getInput('branch_structure') || testBranchStructure
 
-
+console.log("test");
 
 
 
@@ -30,6 +30,6 @@ try {
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`); */
 } catch (error) {
-    
+
     core.setFailed(error.message);
 }
