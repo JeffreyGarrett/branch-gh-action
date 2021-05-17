@@ -1,0 +1,15 @@
+on: [push]
+
+jobs:
+  branch_protection:
+    runs-on: ubuntu-latest
+    name: branch_protection
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: branch_protection
+        uses: ./ # Uses an action in the root directory
+        id: branch_protection
+      # Use the output from the `hello` step
