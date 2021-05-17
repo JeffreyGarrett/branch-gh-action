@@ -1,4 +1,9 @@
 {
+  "name": "githubbranch",
+  "version": "1.0.0",
+  "description": "GH action work",
+  "main": "index.js",
+  "author": "Jeff Garrett",
   "dependencies": {
     "@actions/core": "^1.2.7",
     "@actions/github": "^5.0.0"
