@@ -12,10 +12,10 @@ console.log("testing again");
 
 try {
     const currentBranch = github.context.ref;
-    const futureBranch = github.context.base_ref;
+    const payloadNumber = github.context.payload.pull_request.number;
     
     console.log(currentBranch);
-    console.log(futureBranch);
+    console.log(payloadNumber);
 
     /* `who-to-greet` input defined in action metadata file
     const nameToGreet = core.getInput('who-to-greet');
