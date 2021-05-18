@@ -1,16 +1,14 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
-
 //setup brnahcing structure
 let testFile = fs.readFileSync('branchStructure.json');
 let testBranchStructure = JSON.parse(testFile);
-const token = core.getInput('github-token', { required: true })
+//const token = core.getInput('github-token', { required: true })
 
 let branchStructure = core.getInput('branch_structure') || testBranchStructure
 
 console.log("test");
-
 
 try {
     const currentBranch = github.base_ref;
