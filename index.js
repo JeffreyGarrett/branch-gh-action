@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const fs = require('fs');
 
 //setup brnahcing structure
 let testFile = fs.readFileSync('branchStructure.json');
