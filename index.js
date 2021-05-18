@@ -2,7 +2,7 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const { Webhooks } = require('@octokit/webhooks');
 const fs = require('fs');
-const Webhooks = '@octokit/webhooks'
+
 //setup brnahcing structure
 let testFile = fs.readFileSync('branchStructure.json');
 let testBranchStructure = JSON.parse(testFile);
