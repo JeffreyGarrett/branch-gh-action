@@ -11,9 +11,9 @@ let branchStructure = core.getInput('branch_structure') || testBranchStructure
 console.log("testing again");
 
 try {
-    const currentBranch = github.context.base_ref;
-    const futureBranch = github.context.head_ref;
-
+    const currentBranch = github.context.ref;
+    const futureBranch = github.context.base_ref;
+    
     console.log(currentBranch);
     console.log(futureBranch);
 
