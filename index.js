@@ -1,6 +1,8 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { Webhooks } = require('@octokit/webhooks');
 const fs = require('fs');
+const Webhooks = '@octokit/webhooks'
 //setup brnahcing structure
 let testFile = fs.readFileSync('branchStructure.json');
 let testBranchStructure = JSON.parse(testFile);
@@ -12,10 +14,10 @@ console.log("testing again");
 
 try {
     const currentBranch = github.context.ref;
-    const payloadNumber = github.context.payload.pull_request.number;
+    const prPayload = github.context.payload.pull_request;
     
     console.log(currentBranch);
-    console.log(payloadNumber);
+    console.log(prPayload.number);
 
     /* `who-to-greet` input defined in action metadata file
     const nameToGreet = core.getInput('who-to-greet');
