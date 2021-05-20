@@ -47,12 +47,13 @@ async function run() {
                     }
                 });
 
-            } else {
-                console.log(prPayload.number);
-                core.setFailed("No matching branch rule for merging " + pr.head.ref + " into " + pr.base.ref);
-                core.ExitCode.Failure;
-            }
+            } 
         });
+
+      
+        console.log(prPayload.number);
+        core.setFailed("No matching branch rule for merging " + pr.head.ref + " into " + pr.base.ref);
+        core.ExitCode.Failure;
 
     } catch (error) {
 
