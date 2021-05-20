@@ -2,11 +2,13 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 const fs = require('fs');
 
-//setup brnahcing structure
-let branchRulesFile = fs.readFileSync('branchStructure.json');
-let branchRules = JSON.parse(branchFile);
+//setup branching structure
+const branchRulesFile = fs.readFileSync('branchStructure.json');
+const branchRules = JSON.parse(branchRulesFile);
+const branchStructure = core.getInput('branch_structure') || branchRules;
+
+//setup rest client
 const token = (core.getInput('github_token') || process.env.GITHUB_TOKEN);
-let branchStructure = core.getInput('branch_structure') || branchRules;
 const octokit = new github.GitHub(token)
 const context = github.context
 
