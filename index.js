@@ -10,6 +10,12 @@ const branchStructure = core.getInput('branch_structure') || branchRules;
 
 //setup rest client
 const token = (core.getInput('github_token') || process.env.GITHUB_TOKEN);
+const base = (core.getInput('github_base_ref') || process.env.GITHUB_BASE_REF);
+const head = (core.getInput('github_head_ref') || process.env.GITHUB_HEAD_REF);
+
+console.log("base: " + base);
+console.log("head: " + head);
+
 const octokit = github.getOctokit(token);
 const context = github.context
 
@@ -17,7 +23,7 @@ async function run() {
     console.log("starting try catch");
 
     try {
-        const pull_number = context.payload.pull_request.number
+        const pull_number = core.getInput
         const currentBranch = context.ref;
         //const prPayload = github.context.payload.pull_request;
         console.log("current branch is: " + currentBranch);
