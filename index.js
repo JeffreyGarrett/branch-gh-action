@@ -21,11 +21,11 @@ async function run() {
         const currentBranch = context.ref;
         //const prPayload = github.context.payload.pull_request;
         console.log("current branch is: " + currentBranch);
-        console.log("current pr number: " + pull_number);
-        console.log("current repo: " + context.repo);
+        console.log("current pr number: " + pull_number.toString);
+        console.log("current repo: " + context.repo.repo);
 
         const request = await octokit.pulls.get({
-            ...context.repo,
+            ...context.repo.repo,
             pull_number
         })
 
