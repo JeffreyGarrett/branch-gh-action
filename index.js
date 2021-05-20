@@ -33,7 +33,7 @@ async function run() {
 
         const request = await octokit.pulls.get({
             ...context.repo.repo,
-            pull_number
+            prPayload
         })
 
         const pr = request.data;
