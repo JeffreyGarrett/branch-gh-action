@@ -18,6 +18,6 @@ jobs:
         id: branch_protection
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_HEAD_REF: ${{ GITHUB_HEAD_REF }}
-          GITHUB_BASE_REF: ${{ GITHUB_BASE_REF }}
+          GITHUB_HEAD_REF: ${{ env.GITHUB_HEAD_REF }}
+          GITHUB_BASE_REF: ${{ env.GITHUB_BASE_REF }}
       # Use the output from the `hello` step
