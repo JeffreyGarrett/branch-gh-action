@@ -26,7 +26,7 @@ try {
     
     console.log("The base branch is: " + pr.base.ref);
     console.log("The head branch is: " + pr.head.ref);
-    console.log(JSON.stringify("The Branch strucutre is : \n" + branchStructure))
+    console.log(JSON.stringify(branchStructure));
     
     console.log(currentBranch);
     console.log(prPayload.number);
