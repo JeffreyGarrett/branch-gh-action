@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { GitHub } = require('@actions/github/lib/utils');
 const fs = require('fs');
 
 //setup branching structure
@@ -9,7 +10,7 @@ const branchStructure = core.getInput('branch_structure') || branchRules;
 
 //setup rest client
 const token = (core.getInput('github_token') || process.env.GITHUB_TOKEN);
-const octokit = new github.GitHub(token)
+const octokit = github.getOctokit(token);
 const context = github.context
 
 async function run() {
