@@ -16,4 +16,6 @@ jobs:
       - name: branch_protection
         uses: ./ # Uses an action in the root directory
         id: branch_protection
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Use the output from the `hello` step
