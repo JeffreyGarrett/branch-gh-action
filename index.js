@@ -18,7 +18,7 @@ async function run() {
 
     try {
         const pull_number = parseInt(core.getInput('pull_number'), 0);
-        const currentBranch = ontext.ref;
+        const currentBranch = context.ref;
         //const prPayload = github.context.payload.pull_request;
         console.log("current branch is: " + currentBranch);
 
