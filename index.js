@@ -14,12 +14,14 @@ const octokit = github.getOctokit(token);
 const context = github.context
 
 async function run() {
-    console.log("testing again");
+    console.log("starting try catch");
 
     try {
         const pull_number = parseInt(core.getInput('pull_number'), 0);
-        const currentBranch = github.context.ref;
-        const prPayload = github.context.payload.pull_request;
+        const currentBranch = ontext.ref;
+        //const prPayload = github.context.payload.pull_request;
+        console.log("current branch is: " + currentBranch);
+
 
         const request = await octokit.pulls.get({
             ...context.repo,
@@ -32,7 +34,7 @@ async function run() {
         console.log("The head branch is: " + pr.head.ref);
         console.log(JSON.stringify(branchStructure));
 
-        console.log(currentBranch);
+        
         console.log(prPayload.number);
 
 
