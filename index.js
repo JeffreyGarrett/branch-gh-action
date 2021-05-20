@@ -37,7 +37,7 @@ async function run() {
 
         const pr = request.data;
         console.log(JSON.stringify(branchStructure));
-        branchStructure.branchRules.forEach(branch => {
+        branchStructure.branch_rules.forEach(branch => {
 
             if (branch.branch == pr.base.ref) {
                 branch.accepted_incoming_branches.forEach(rule => {
