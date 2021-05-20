@@ -9,9 +9,8 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - run: npm install
       - name: branch_protection
-        uses: ./dist/index.js
+        uses: ./
         id: branch_protection
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
