@@ -21,24 +21,22 @@ const context = github.context
 async function run() {
 
     try {
-
+        console.log("Getting PR information");
+        //sending API request to get the full PR object
         const prPayload = github.context.payload.pull_request.number;
-
-        ;
-        console.log("prnumber is: " + prPayload);
-        console.log("current repo: " + context.repo.repo);
-
-
         const request = await octokit.pulls.get({
             owner: context.repo.owner,
             repo: context.repo.repo,
             pull_number: prPayload
         })
-
         const pr = request.data;
-        console.log(JSON.stringify(branchStructure));
+        
+        console.log("The base branch is: " + pr.base.ref);
+        console.log("The head branch is: " + pr.head.ref);
+        console.log("Branch rules are:  " + JSON.stringify(branchStructure));
+        //main logic to test branching structure. 
+        //console.log(JSON.stringify(branchStructure));
         branchStructure.branch_rules.forEach(branch => {
-
             if (branch.branch == pr.base.ref) {
                 branch.accepted_incoming_branches.forEach(rule => {
                     if (rule == pr.head.ref) {
@@ -49,19 +47,11 @@ async function run() {
                 });
 
             } else {
-                console.log("The base branch is: " + pr.base.ref);
-                console.log("The head branch is: " + pr.head.ref);
-                console.log(JSON.stringify(branchStructure));
                 console.log(prPayload.number);
                 core.setFailed("No matching branch rule for merging " + pr.head.ref + " into " + pr.base.ref);
                 core.ExitCode.Failure;
             }
-
         });
-
-
-
-
 
     } catch (error) {
 
@@ -69,6 +59,8 @@ async function run() {
     }
 }
 
+
+//run application
 run().catch((error) => {
     core.setFailed(error.message)
 })
