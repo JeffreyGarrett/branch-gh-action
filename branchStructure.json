@@ -2,7 +2,7 @@
     "branch_rules": [
         {
             "branch": "main",
-            "accepted_incoming_branches": ["main", "dev"]
+            "accepted_incoming_branches": ["main", "dev", "test"]
         }
     ] 
 }
