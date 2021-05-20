@@ -9,12 +9,8 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-      - run: npm install
       - name: branch_protection
-        uses: ./ # Uses an action in the root directory
+        uses: ./
         id: branch_protection
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
