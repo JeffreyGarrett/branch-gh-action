@@ -43,24 +43,21 @@ async function run() {
                         console.log("rule found for " + rule)
                         console.log("This is ok!");
                         core.ExitCode.Success;
-
                     }
                 });
-
+            }else{
+            console.log("Branch doesn't have any rules assigned to enforce.");
+            core.ExitCode.Success;
             } 
         });
-
-      
         console.log(prPayload.number);
         core.setFailed("No matching branch rule for merging " + pr.head.ref + " into " + pr.base.ref);
         core.ExitCode.Failure;
-
     } catch (error) {
 
         core.setFailed(error.message);
     }
 }
-
 
 //run application
 run().catch((error) => {
