@@ -1,4 +1,4 @@
-on: [push]
+on: [pull_request]
 
 jobs:
   branch_protection:
@@ -16,4 +16,8 @@ jobs:
       - name: branch_protection
         uses: ./ # Uses an action in the root directory
         id: branch_protection
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          #GITHUB_HEAD_REF: ${{ github.head_ref }}
+          #GITHUB_BASE_REF: ${{ github.base_ref }}
       # Use the output from the `hello` step
