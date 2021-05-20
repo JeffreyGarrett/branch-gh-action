@@ -6,6 +6,7 @@
   "author": "Jeff Garrett",
   "dependencies": {
     "@actions/core": "^1.2.7",
-    "@actions/github": "^4.0.0"
+    "@actions/github": "^4.0.0",
+    "@octokit/webhooks": "^9.6.1"
   }
 }
