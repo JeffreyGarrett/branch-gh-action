@@ -1,0 +1,28 @@
+{
+    "branch_rules": [
+        {
+            "branch": "main",
+            "accepted_incoming_branches": ["main", "Prod"]
+        },
+        {
+            "branch": "Prod",
+            "accepted_incoming_branches": ["Prod", "Staging"]
+        }, 
+        {
+            "branch": "Staging",
+            "accepted_incoming_branches": ["App-sit", "Staging"]
+        },
+        {
+            "branch": "App-sit",
+            "accepted_incoming_branches": ["App-sit", "App-dev"]
+        },
+        {
+            "branch": "App-dev",
+            "accepted_incoming_branches": ["Factory-dev", "App-dev"]
+        },
+        {
+            "branch": "Factory-SIT",
+            "accepted_incoming_branches": ["Factory-SIT", "Factory-dev"]
+        }
+    ]
+}
