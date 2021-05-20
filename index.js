@@ -37,9 +37,10 @@ async function run() {
         //main logic to test branching structure. 
         //console.log(JSON.stringify(branchStructure));
         branchStructure.branch_rules.forEach(branch => {
-            if (branch.branch == pr.base.ref) {
+            if (branch.branch === pr.base.ref) {
                 branch.accepted_incoming_branches.forEach(rule => {
-                    if (rule == pr.head.ref) {
+                    if (rule === pr.head.ref) {
+                        console.log("rule found for " + rule)
                         console.log("This is ok!");
                         core.ExitCode.Success;
 
