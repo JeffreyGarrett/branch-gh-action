@@ -34,8 +34,8 @@ async function run() {
         console.log("current repo: " + repo);
 
         const request = await octokit.pulls.get({
-            ...context.repo.owner,
-            ...context.repo.repo,
+            owner:context.repo.owner,
+            repo: context.repo.repo,
             prPayload
         })
 
