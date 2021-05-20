@@ -17,11 +17,11 @@ async function run() {
     console.log("starting try catch");
 
     try {
-        const pull_number = parseInt(core.getInput('pull_number'), 0);
+        const pull_number = core.getInput('pull_number');
         const currentBranch = context.ref;
         //const prPayload = github.context.payload.pull_request;
         console.log("current branch is: " + currentBranch);
-        console.log("current pr number: " + pull_number.valueOf);
+        console.log("current pr number: " + pull_number);
         console.log("current repo: " + context.repo.repo);
 
         const request = await octokit.pulls.get({
