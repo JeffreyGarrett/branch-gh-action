@@ -15,6 +15,8 @@ const head = (core.getInput('github_head_ref') || process.env.GITHUB_HEAD_REF);
 
 console.log("base: " + base);
 console.log("head: " + head);
+console.log("context head" + github.context.baseRef);
+console.log("context head" + github.context.base_ref);
 
 const octokit = github.getOctokit(token);
 const context = github.context
