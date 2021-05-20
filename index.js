@@ -26,7 +26,7 @@ async function run() {
 
         const request = await octokit.pulls.get({
             ...context.repo.repo,
-            pull_number.valueOf
+            pull_number
         })
 
         const pr = request.data;
