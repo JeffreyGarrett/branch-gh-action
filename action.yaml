@@ -1,8 +1,8 @@
-name: 'Branch Controls'
+name: 'Linear Branch Enforcement'
 description: 'Enforce Branches'
 inputs:
   branch_structure:
-    description: 'Json object of branching branch_structure'
+    description: 'File location of json file'
     required: false
 runs:
   using: 'node12'
