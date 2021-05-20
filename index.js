@@ -17,7 +17,7 @@ async function run() {
     console.log("starting try catch");
 
     try {
-        const pull_number = core.getInput('pull_number');
+        const pull_number = context.payload.pull_request.number
         const currentBranch = context.ref;
         //const prPayload = github.context.payload.pull_request;
         console.log("current branch is: " + currentBranch);
