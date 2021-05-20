@@ -1,6 +1,11 @@
 name: 'Branch Controls'
 description: 'Enforce Branches'
+inputs:
+  branch_structure:
+    description: 'Json object of branching branch_structure'
+    required: false
 runs:
   using: 'node12'
   main: 'index.js'
+
   

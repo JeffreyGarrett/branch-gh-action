@@ -4,16 +4,16 @@ const { GitHub } = require('@actions/github/lib/utils');
 const fs = require('fs');
 
 //setup branching structure
-const branchRulesFile = fs.readFileSync('branchStructure.json');
-const branchRules = JSON.parse(branchRulesFile);
-const branchStructure = core.getInput('branch_structure') || branchRules;
+const branchFileLocation = core.getInput('branch_file_location') || 'branchStructure.json'
+const branchRulesFile = fs.readFileSync(branchFileLocation);
+const branchStructure = JSON.parse(branchRulesFile);
 
 //setup rest client
 const token = (core.getInput('github_token') || process.env.GITHUB_TOKEN);
 
 //environment variables that could be used vs API call.
-const base = (core.getInput('github_base_ref') || process.env.GITHUB_BASE_REF);
-const head = (core.getInput('github_head_ref') || process.env.GITHUB_HEAD_REF);
+//const base = (core.getInput('github_base_ref') || process.env.GITHUB_BASE_REF);
+//const head = (core.getInput('github_head_ref') || process.env.GITHUB_HEAD_REF);
 
 const octokit = github.getOctokit(token);
 const context = github.context
