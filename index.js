@@ -52,20 +52,22 @@ async function run() {
                         console.log("rule found for " + allowRule);
                         console.log("wild card found.  All branches permitted");
                         core.ExitCode.Success;
-
+                        process.exit();
+                        
                     } else if (allowRule === pr.head.ref) {
                         console.log("rule found for " + allowRule);
                         console.log("This is ok!");
                         core.ExitCode.Success;
+                        process.exit();
                     }
                 });
                 console.log("Found Branch but no matching rule to allow " + pr.head.ref + " into " + pr.base.ref);
                 core.ExitCode.Failure;
             }
         });
-        console.log(prPayload.number);
-        core.log("No rules for branch " + pr.base.ref);
-        core.log("Allowing pr from " + pr.head.ref + " to " + pr.base.ref);
+        
+        console.log("No rules for branch " + pr.base.ref);
+        console.log("Allowing pr from " + pr.head.ref + " to " + pr.base.ref);
         core.ExitCode.Success;
 
 
