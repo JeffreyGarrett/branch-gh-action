@@ -22,7 +22,7 @@
         },
         {
             "branch": "Factory-SIT",
-            "accepted_incoming_branches": ["Factory-SIT", "Factory-dev"]
+            "accepted_incoming_branches": ["*"]
         }
     ]
 }
