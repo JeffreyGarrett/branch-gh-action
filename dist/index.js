@@ -6077,8 +6077,8 @@ async function run() {
         const pr = request.data;
 
         console.log("The base branch is: " + pr.base.ref);
-        console.log("The head branch is: " + pr.head.ref);
-        console.log("Branch rules are:  " + JSON.stringify(branchStructure));
+        console.log("The head branch is: " + pr.head.ref + "\n\n");
+        //console.log("Branch rules are:  " + JSON.stringify(branchStructure));
         //main logic to test branching structure. 
         //console.log(JSON.stringify(branchStructure));
         branchStructure.branch_rules.forEach(branch => {
@@ -6086,7 +6086,7 @@ async function run() {
             //check to see if branch rule
             if (branch.branch === pr.base.ref) {
                 //if found branch, loop through allowed list
-                console.log("Checking for Rules for " + branch.branch);
+                console.log("Checking Allow Rules for " + branch.branch);
                 branch.accepted_incoming_branches.forEach(allowRule => {
                     console.log("Found allow rule for: " + allowRule);
 
@@ -6111,15 +6111,11 @@ async function run() {
                 process.exit(1);
             }
         });
-        
-        console.log("No rules for branch " + pr.base.ref);
-        console.log("Allowing pr from " + pr.head.ref + " to " + pr.base.ref);
+        core.info("No rules for branch " + pr.base.ref)
+        core.info("Allowing pr from " + pr.head.ref + " to " + pr.base.ref)
         core.ExitCode.Success;
 
-
-
     } catch (error) {
-
         core.setFailed(error.message);
     }
 }
