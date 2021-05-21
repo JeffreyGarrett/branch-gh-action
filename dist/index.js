@@ -6063,7 +6063,7 @@ const octokit = github.getOctokit(token);
 const context = github.context
 
 async function run() {
-    const wildCard = "ALL";
+    const wildCard = "*";
     let branchFound = false;
     try {
         console.log("Getting PR information");
@@ -6102,6 +6102,7 @@ async function run() {
                         console.log("rule found for " + allowRule);
                         console.log("This is ok!");
                         core.ExitCode.Success;
+                        
                         process.exit();
                     }
                 });
