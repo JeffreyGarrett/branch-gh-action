@@ -8,6 +8,8 @@ This action will fail if the head branch is not an approved branch to merge into
 
 The location of the file for the json branchStruction of the person to greet. Default's to local system. 
 
+Drop a file called branchStructure.json into the location you will be running the action (normally root).  The application will process the json file.  An example file would look like:
+
 ```
 {
     "branch_rules": [
@@ -44,8 +46,9 @@ The location of the file for the json branchStruction of the person to greet. De
 ### `NA
 
 
-## Example usage
+## build
 
-uses: actions/branch-gh-action@0.1
-with:
-  branch_structure: './branchStructure.json'
+to build run `npm run build`
+
+
+
