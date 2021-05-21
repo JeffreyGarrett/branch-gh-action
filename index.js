@@ -19,7 +19,7 @@ const octokit = github.getOctokit(token);
 const context = github.context
 
 async function run() {
-    const wildCard = '*';
+    const wildCard = "ALL";
     try {
         console.log("Getting PR information");
         //sending API request to get the full PR object
@@ -39,7 +39,7 @@ async function run() {
         branchStructure.branch_rules.forEach(branch => {
             if (branch.branch === pr.base.ref) {
                 branch.accepted_incoming_branches.forEach(rule => {
-                    if( rule == wildCard ){
+                    if( rule === wildCard ){
                         console.log("rule found for " + rule);
                         console.log("wild card found.  All branches permitted");
                         core.ExitCode.Success;
