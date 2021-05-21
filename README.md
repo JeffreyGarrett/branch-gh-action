@@ -44,8 +44,6 @@ The location of the file for the json branchStruction of the person to greet. De
 ### `NA
 
 
-## Example usage
+##
 
-uses: actions/branch-gh-action@0.1
-with:
-  branch_structure: './branchStructure.json'
+to build run 

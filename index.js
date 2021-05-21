@@ -59,7 +59,7 @@ async function run() {
                         core.ExitCode.Success;
                     }
                 });
-                core.log("Found Branch but no matching rule to allow " + pr.head.ref + " into " + pr.base.ref);
+                console.log("Found Branch but no matching rule to allow " + pr.head.ref + " into " + pr.base.ref);
                 core.ExitCode.Failure;
             }
         });
