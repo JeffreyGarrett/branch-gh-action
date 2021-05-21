@@ -20,6 +20,7 @@ const context = github.context
 
 async function run() {
     const wildCard = "ALL";
+    let branchFound = false;
     try {
         console.log("Getting PR information");
         //sending API request to get the full PR object
@@ -30,33 +31,45 @@ async function run() {
             pull_number: prPayload
         })
         const pr = request.data;
-        
+
         console.log("The base branch is: " + pr.base.ref);
         console.log("The head branch is: " + pr.head.ref);
         console.log("Branch rules are:  " + JSON.stringify(branchStructure));
         //main logic to test branching structure. 
         //console.log(JSON.stringify(branchStructure));
         branchStructure.branch_rules.forEach(branch => {
+
+            //check to see if branch rule
             if (branch.branch === pr.base.ref) {
-                branch.accepted_incoming_branches.forEach(rule => {
-                    if( rule === wildCard ){
-                        console.log("rule found for " + rule);
+                //if found branch, loop through allowed list
+                console.log("Checking for Rules for " + branch.branch);
+                branch.accepted_incoming_branches.forEach(allowRule => {
+                    console.log("Found allow rule for: " + allowRule);
+
+                    //check for wildcard first 
+                    //then check for rule
+                    if (allowRule === wildCard) {
+                        console.log("rule found for " + allowRule);
                         console.log("wild card found.  All branches permitted");
                         core.ExitCode.Success;
-                    }else if (rule === pr.head.ref) {
-                        console.log("rule found for " + rule);
+
+                    } else if (allowRule === pr.head.ref) {
+                        console.log("rule found for " + allowRule);
                         console.log("This is ok!");
                         core.ExitCode.Success;
                     }
                 });
-            }else{
-            console.log("No branch in elements to address.");
-            core.ExitCode.Success;
-            } 
+                core.log("Found Branch but no matching rule to allow " + pr.head.ref + " into " + pr.base.ref);
+                core.ExitCode.Failure;
+            }
         });
         console.log(prPayload.number);
-        core.log("No matching branch rule for merging " + pr.head.ref + " into " + pr.base.ref);
-        core.ExitCode.Failure;
+        core.log("No rules for branch " + pr.base.ref);
+        core.log("Allowing pr from " + pr.head.ref + " to " + pr.base.ref);
+        core.ExitCode.Success;
+
+
+
     } catch (error) {
 
         core.setFailed(error.message);
