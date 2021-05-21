@@ -49,7 +49,7 @@ async function run() {
                     //check for wildcard first 
                     //then check for rule
                     if (allowRule === wildCard) {
-                        console.log("rule found for " + allowRule);
+                        core.info("rule found for " + allowRule);
                         console.log("wild card found.  All branches permitted");
                         core.ExitCode.Success;
                         process.exit();
@@ -62,7 +62,7 @@ async function run() {
                         process.exit();
                     }
                 });
-                console.log("Found Branch but no matching rule to allow " + pr.head.ref + " into " + pr.base.ref);
+                core.error("Found Branch but no matching rule to allow " + pr.head.ref + " into " + pr.base.ref)
                 core.ExitCode.Failure;
                 process.exit(1);
             }
