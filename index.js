@@ -64,6 +64,7 @@ async function run() {
                 });
                 console.log("Found Branch but no matching rule to allow " + pr.head.ref + " into " + pr.base.ref);
                 core.ExitCode.Failure;
+                process.exit();
             }
         });
         
