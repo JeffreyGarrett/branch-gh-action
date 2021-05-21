@@ -19,7 +19,7 @@ const octokit = github.getOctokit(token);
 const context = github.context
 
 async function run() {
-
+    const wildCard = "ALL";
     try {
         console.log("Getting PR information");
         //sending API request to get the full PR object
@@ -39,19 +39,23 @@ async function run() {
         branchStructure.branch_rules.forEach(branch => {
             if (branch.branch === pr.base.ref) {
                 branch.accepted_incoming_branches.forEach(rule => {
-                    if (rule === pr.head.ref) {
-                        console.log("rule found for " + rule)
+                    if( rule === wildCard ){
+                        console.log("rule found for " + rule);
+                        console.log("wild card found.  All branches permitted");
+                        core.ExitCode.Success;
+                    }else if (rule === pr.head.ref) {
+                        console.log("rule found for " + rule);
                         console.log("This is ok!");
                         core.ExitCode.Success;
                     }
                 });
             }else{
-            console.log("Branch doesn't have any rules assigned to enforce.");
+            console.log("No branch in elements to address.");
             core.ExitCode.Success;
             } 
         });
         console.log(prPayload.number);
-        core.setFailed("No matching branch rule for merging " + pr.head.ref + " into " + pr.base.ref);
+        core.log("No matching branch rule for merging " + pr.head.ref + " into " + pr.base.ref);
         core.ExitCode.Failure;
     } catch (error) {
 
