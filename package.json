@@ -4,6 +4,9 @@
   "description": "GH action work",
   "main": "index.js",
   "author": "Jeff Garrett",
+  "scripts": {
+    "build": "ncc build index.js --license licenses.txt"
+  },
   "dependencies": {
     "@actions/core": "^1.2.7",
     "@actions/github": "^4.0.0",
